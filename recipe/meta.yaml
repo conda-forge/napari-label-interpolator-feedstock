@@ -1,5 +1,5 @@
 {% set name = "napari-label-interpolator" %}
-{% set version = "0.1.0" %}
+{% set version = "0.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-label-interpolator-{{ version }}.tar.gz
-  sha256: a5f78254a557e16c0811d41e585f41fd7f6c9fffc1ded45c7eff460795f0c9b5
+  sha256: 4fb2f73f15f4587c35fb7e87c54ba8503a615c05c25f3e7961d72b8939334ded
 
 build:
   noarch: python
@@ -20,8 +20,11 @@ requirements:
     - python >=3.8
     - setuptools-scm
   run:
+    - dask-core     # Imported but not declared as dependency
     - edt
     - magicgui
+    - napari        # Imported but not declared as dependency
+    - numpy         # Imported but not declared as dependency
     - python >=3.8
 
 test:
@@ -34,10 +37,11 @@ test:
     - pip
 
 about:
-  home: https://github.com/brisvag/napari-label-interpolator
+  home: https://pypi.org/project/napari-label-interpolator
   summary: A napari plugin to interpolate any number of (n-1)d-labels across a single dimension.
   license: GPL-3.0-only
   license_file: LICENSE
+  dev_url: https://github.com/brisvag/napari-label-interpolator
 
 extra:
   recipe-maintainers:
